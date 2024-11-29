@@ -8,7 +8,7 @@
                 <th class="border-b font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 text-left">Action</th>
             </tr>
         </thead>
-        <tbody class="bg-white dark:bg-slate-800">
+        <tbody class="bg-white">
             <?php foreach ($records as $record) : ?>
                 <tr>
                     <td class="border-b border-slate-100  p-4 pl-8 text-slate-500 "><?= $record['name'] ?></td>

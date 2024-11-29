@@ -33,9 +33,9 @@ tel TEXT)
 
 Database::q($buildDb);
 
-$count = Database::q('SELECT COUNT(*) as count FROM users')->fetch();
+$records = Database::q('SELECT COUNT(*) as count FROM users')->fetch();
 
-if ($count == 0) {
+if ($records['count'] == 0) {
     $insertUsers = "
 INSERT INTO users (name, email, tel) VALUES
 ('Alice', 'alice42@example.com', '1234567890'),

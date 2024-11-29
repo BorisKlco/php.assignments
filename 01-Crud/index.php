@@ -1,6 +1,6 @@
 <?php
-const BASE_PATH = __DIR__ . '/';
-const VIEWS = __DIR__ . '/views/';
+const BASE_PATH = __DIR__ . DIRECTORY_SEPARATOR;
+const VIEWS = BASE_PATH . 'views' . DIRECTORY_SEPARATOR;
 require_once BASE_PATH . 'helpers.php';
 require_once BASE_PATH . 'db.php';
 
@@ -38,7 +38,17 @@ function search()
 
 function create()
 {
-    dd($_REQUEST);
+    $req = sanitaze();
+    if (filter_var($req['email'], FILTER_VALIDATE_EMAIL)) {
+        Database::q('INSERT INTO users (name,email,tel) VALUES (:name,:email,:tel)', [
+            'name' => $req['name'],
+            'email' => $req['email'],
+            'tel' => $req['tel']
+        ]);
+        header('Location: /');
+        exit();
+    }
+    renderView('index', ['error' => 'email is not valid', 'old' => $req]);
 }
 
 function edit()
@@ -53,10 +63,18 @@ function edit()
 
 function update()
 {
-    dd(fetchRecord());
     $record = fetchRecord();
     if ($record) {
-        return renderView('edit', $record);
+        $req = sanitaze();
+        Database::q(
+            'UPDATE users SET name = :name, email = :email, tel = :tel WHERE id = :id',
+            [
+                'id' => $req['id'],
+                'name' => $req['name'],
+                'email' => $req['email'],
+                'tel' => $req['tel']
+            ]
+        );
     }
     header('Location: /list');
     exit();

@@ -16,9 +16,19 @@ function renderView($view, $params = [])
     include VIEWS . 'layout.php';
 }
 
+function sanitaze()
+{
+    $request = [];
+    foreach ($_REQUEST as $key => $item) {
+        $request[$key] = htmlspecialchars($item);
+    }
+
+    return $request;
+}
+
 function fetchRecord()
 {
-    $id = $_REQUEST['id'] ?? null;
+    $id = htmlspecialchars($_REQUEST['id']) ?? null;
     $recordExist = Database::q('SELECT * FROM users WHERE id = :id', ['id' => $id])->fetch();
     return $recordExist;
 }
