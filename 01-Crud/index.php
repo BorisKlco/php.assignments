@@ -32,8 +32,11 @@ function show()
 
 function search()
 {
-    $records = Database::q('SELECT * FROM users')->fetchAll();
-    renderView('show', ['records' => $records]);
+    $search = sanitaze();
+    if ($search['q'] ?? false) {
+        $result = Database::q("SELECT * FROM users WHERE name LIKE :q", ['q' => "%{$search['q']}%"])->fetchAll();
+    }
+    renderView('search', ['result' => $result ?? []]);
 }
 
 function create()
