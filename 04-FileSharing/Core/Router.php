@@ -39,7 +39,7 @@ class Router
         }
 
         if (!$action) {
-            //error
+            View::error();
         }
 
         [$class, $fn] = $action;
@@ -49,6 +49,6 @@ class Router
             exit();
         }
 
-        //error
+        View::error();
     }
 }
