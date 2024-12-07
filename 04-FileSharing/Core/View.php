@@ -24,21 +24,17 @@ class View
             'error' => 'Page not found.',
             'code' => 404,
         ];
-        $res = new self('error', $info);
-        echo $res->render(true);
+        extract($info);
+        include VIEWS . 'error.php';
         exit();
     }
 
-    private function render(bool $excep = false)
+    private function render()
     {
         $title = "FileSharing";
         extract($this->params);
         $slot = VIEWS . "{$this->view}.php";
         $layout = VIEWS . 'layout.php';
-
-        if ($excep) {
-            $layout = $slot;
-        }
 
         if (file_exists($slot)) {
             include $layout;
