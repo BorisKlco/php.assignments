@@ -31,7 +31,7 @@ class View
 
     private function render()
     {
-        $title = "FileSharing";
+        $title = "Dropie";
         extract($this->params);
         $slot = VIEWS . "{$this->view}.php";
         $layout = VIEWS . 'layout.php';

@@ -47,16 +47,16 @@
                 <label
                     class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center"
                     id="drop-area">
-                    <div class="h-full w-full text-center flex flex-col items-center justify-center">
+                    <div id="file-info" class="h-full w-full flex flex-col items-center justify-center">
                         <div class="flex flex-auto mx-auto">
                             <img
                                 class="has-mask object-center"
                                 src="https://img.icons8.com/clouds/100/workstation.png">
                         </div>
-                        <p class="pointer-none text-gray-500">
+                        <div class="pointer-none text-gray-500">
                             <span class="text-sm">Drag and drop</span> files here
                             <br /> or select a file from your computer
-                        </p>
+                        </div>
                     </div>
                     <input type="file" name="file" class="hidden" id="file-input">
                 </label>
@@ -66,11 +66,28 @@
                     class="bg-teal-500 h-2 rounded"
                     style="width: 50%"></div>
             </div>
-            <button class="mt-2 py-2 w-full ring-1 shadow ring-black/5 rounded-lg bg-teal-500 hover:bg-teal-600 text-slate-50">
+            <button id="submit-button" class="mt-2 py-2 w-full ring-1 shadow ring-black/5 rounded-lg bg-teal-500 hover:bg-teal-600 text-slate-50 disabled:bg-gray-400">
                 Upload
             </button>
         </form>
         <script>
+            htmx.on('#file-input', 'change', function(evt) {
+                const maxSize = 1 * 1024 * 1024
+                let name = evt.target.files[0].name
+                let size = evt.target.files[0].size
+                if (size > maxSize) {
+                    htmx.swap("#file-info", "<div>Sorry, file is too big.</div><div>Max file size 10MB</div>", {
+                        swapStyle: 'innerHTML'
+                    });
+                    htmx.find('#submit-button').setAttribute('disabled', 'true')
+                } else {
+                    htmx.swap("#file-info", `<p>${name}</p>
+                    <p><span class='font-semibold'>Size:</span>  ${Math.round(size / 1000)}kb</p>`, {
+                        swapStyle: 'innerHTML'
+                    });
+                    htmx.find('#submit-button').removeAttribute('disabled')
+                }
+            })
             htmx.on('#form', 'htmx:xhr:progress', function(evt) {
                 htmx.removeClass(htmx.find("#toggle-progress"), "hidden");
                 const progressElement = htmx.find('#progress-bar');
