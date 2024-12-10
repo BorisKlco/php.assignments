@@ -54,7 +54,7 @@
                                 src="https://img.icons8.com/clouds/100/workstation.png">
                         </div>
                         <div class="pointer-none text-gray-500">
-                            <span class="text-sm">Drag and drop <br /> or select a file from your computer</span>
+                            <span class="text-sm">Drag and drop or select<br /> a file from your computer(10MB)</span>
                         </div>
                     </div>
                     <input type="file" name="file" class="hidden" id="file-input">
