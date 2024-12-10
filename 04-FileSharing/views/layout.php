@@ -19,13 +19,13 @@
     </div>
     <div class="flex justify-center">
         <nav class="max-w-3xl w-full my-4 mx-2 flex justify-between ring-1 shadow ring-black/10 rounded-full py-2 px-4 bg-slate-50">
-            <a href="#" class="flex justify-center items-center gap-2 hover:drop-shadow-[1px_1px_1px_rgba(70,200,150,0.5)]">
+            <a href="/" class="flex justify-center items-center gap-2 hover:drop-shadow-[1px_1px_1px_rgba(70,200,150,0.5)]">
                 <img width="48" height="48" src="https://img.icons8.com/clouds/100/share.png" class="drop-shadow" />
                 <h1 class="font-bold select-none text-zinc-700 text-lg font-['Playwrite_HR_Lijeva']">Dropie</h1>
             </a>
             <div class="flex items-center gap-2">
                 <a href="#" class="px-4 py-1 text-gray-700 font-semibold text-sm hover:text-black hover:underline underline-offset-2">Register</a>
-                <a href="#" class="px-4 py-1 rounded-full bg-teal-400 ring-1 ring-black/10 text-slate-100 font-semibold text-sm hover:bg-teal-500 hover:text-white">Sign in</a>
+                <a href="#" class="px-4 py-1 rounded-full bg-teal-500 ring-1 ring-black/10 text-slate-100 font-semibold text-sm hover:bg-teal-600 hover:text-white">Sign in</a>
             </div>
         </nav>
     </div>

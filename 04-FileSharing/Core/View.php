@@ -16,6 +16,15 @@ class View
         exit();
     }
 
+    public static function partial(string $view, array $params = []): void
+    {
+        $res = new self($view, $params);
+        extract($res->params);
+        include VIEWS . "{$res->view}.php";
+        exit();
+    }
+
+
     public static function error(): void
     {
         http_response_code(404);

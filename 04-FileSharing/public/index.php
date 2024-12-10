@@ -5,6 +5,7 @@ use Core\Router;
 
 const BASE_PATH = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR;
 const VIEWS = BASE_PATH . 'views' . DIRECTORY_SEPARATOR;
+const FILES = BASE_PATH . 'files' . DIRECTORY_SEPARATOR;
 
 spl_autoload_register(function ($class) {
     $class = BASE_PATH . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
