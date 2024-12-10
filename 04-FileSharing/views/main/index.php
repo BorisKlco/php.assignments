@@ -88,6 +88,11 @@
                     htmx.find('#submit-button').removeAttribute('disabled')
                 }
             })
+
+            htmx.on('#drop-area', 'ondrop', function(e) {
+                console.log(e);
+            })
+
             htmx.on('#form', 'htmx:xhr:progress', function(evt) {
                 htmx.removeClass(htmx.find("#toggle-progress"), "hidden");
                 const progressElement = htmx.find('#progress-bar');
@@ -98,31 +103,29 @@
             const dropArea = document.getElementById('drop-area');
             const fileInput = document.getElementById('file-input');
 
-            // Prevent default behaviors
-            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                dropArea.addEventListener(eventName, (e) => e.preventDefault(), false);
-                dropArea.addEventListener(eventName, (e) => e.stopPropagation(), false);
+            // Drag-and-Drop Event Listeners
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropArea.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    dropArea.classList.add('border-blue-500');
+                });
             });
 
-            // Highlight drop area on dragover
-            dropArea.addEventListener('dragover', () => {
-                dropArea.classList.add('border-blue-500');
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    dropArea.classList.remove('border-blue-500');
+                });
             });
 
-            // Remove highlight on dragleave or drop
-            dropArea.addEventListener('dragleave', () => {
-                dropArea.classList.remove('border-blue-500');
-            });
 
             dropArea.addEventListener('drop', (e) => {
-                dropArea.classList.remove('border-blue-500');
                 const files = e.dataTransfer.files;
 
-                // Register the dropped files in the file input
-                fileInput.files = files;
-
-                // Log the files for debugging
-                console.log(files);
+                if (files.length > 0) {
+                    fileInput.files = files; // Register dropped files with the input
+                    fileInput.dispatchEvent(new Event('change')); // Trigger the change event
+                }
             });
         </script>
 
