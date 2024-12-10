@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.3"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playwrite+HR+Lijeva:wght@100..400&family=Quicksand:wght@500&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -24,7 +25,7 @@
             </a>
             <div class="flex items-center gap-2">
                 <a href="#" class="px-4 py-1 text-gray-700 font-semibold text-sm hover:text-black hover:underline underline-offset-2">Register</a>
-                <a href="#" class="px-4 py-1 rounded-full bg-teal-400 ring-1 ring-black/10 text-gray-700 font-semibold text-sm hover:bg-teal-500 hover:text-white">Sign in</a>
+                <a href="#" class="px-4 py-1 rounded-full bg-teal-400 ring-1 ring-black/10 text-slate-100 font-semibold text-sm hover:bg-teal-500 hover:text-white">Sign in</a>
             </div>
         </nav>
     </div>

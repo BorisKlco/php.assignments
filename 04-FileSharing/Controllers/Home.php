@@ -11,4 +11,9 @@ class Home
     {
         View::show('main/index');
     }
+    public function upload()
+    {
+        echo '<pre>';
+        var_dump($_POST, $_REQUEST, $_FILES);
+    }
 }

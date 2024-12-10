@@ -17,4 +17,5 @@ session_start();
 $router = new Router();
 
 $router->get('/', [Home::class, 'index']);
+$router->post('/upload', [Home::class, 'upload']);
 $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
