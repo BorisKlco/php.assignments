@@ -21,4 +21,5 @@ $router->get('/', [Home::class, 'index']);
 $router->post('/upload', [Home::class, 'upload']);
 $router->get('/d', [Home::class, 'download']);
 $router->post('/d', [Home::class, 'serveFile']);
+$router->get('/files', [Home::class, 'list']);
 $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);

@@ -14,6 +14,22 @@ class Home
     {
         View::show('main/index');
     }
+    public function list()
+    {
+        $fileList = Database::query('SELECT * FROM files')->fetchAll();
+        $list = [];
+        foreach ($fileList as $record) {
+            $expired = $record['expire_date'] ? (new \DateTime($record['expire_date']) < new \DateTime()) : false;
+
+            $list[] = [
+                'name' => $record['name'],
+                'link' => $expired ? null : $record['token']
+            ];
+        }
+
+        View::show('main/list', ['list' => $list]);
+    }
+
     public function upload()
     {
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
