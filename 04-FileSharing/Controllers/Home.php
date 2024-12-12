@@ -55,7 +55,7 @@ class Home
                 'user' => $user
             ]);
 
-            View::partial('upload/ok', ['token' => $token]);
+            View::partial('upload/ok', ['token' => $token, 'expire' => $date, 'name' => $fileName]);
         } catch (\Throwable $th) {
             View::partial('upload/error');
         }
