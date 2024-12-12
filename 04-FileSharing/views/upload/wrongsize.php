@@ -25,8 +25,8 @@
             class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center cursor-pointer"
             id="drop-area">
             <div id="file-info" class="h-full w-full flex flex-col items-center justify-center">
-                <div>Sorry, file upload failed.</div>
-                <div>Try again.</div>
+                <div>Sorry, file is too big.</div>
+                <div>Max file size 10MB</div>
             </div>
             <input type="file" name="file" class="hidden" id="file-input">
         </label>

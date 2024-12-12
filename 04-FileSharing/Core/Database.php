@@ -7,7 +7,7 @@ use PDOStatement;
 
 class Database
 {
-    protected PDO $db = null;
+    protected static ?PDO $db = null;
 
     public static function instance()
     {
@@ -23,13 +23,10 @@ class Database
 
     public static function query(string $query, array $params = []): PDOStatement
     {
-        try {
-            $db = self::instance();
-            $statement = $db->prepare($query);
-            $statement->execute($params);
-        } catch (\PDOException $e) {
-            View::error();
-        }
+        $db = self::instance();
+        $statement = $db->prepare($query);
+        $statement->execute($params);
+
         return $statement;
     }
 }

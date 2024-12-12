@@ -1,1 +1,1 @@
-File is ok
+<?= $token ?>
